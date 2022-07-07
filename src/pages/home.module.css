@@ -1,0 +1,8 @@
+.blocks {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn {
+    background: rgba(0, 255, 0, 0.1);
+}

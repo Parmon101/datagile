@@ -1,0 +1,23 @@
+.wrapper {
+    border: solid 1px black;
+    font-size: 24px;
+    padding: 5px;
+    margin: 5px;
+    width: 13rem;
+}
+
+.btn {
+    border-radius: 5px;
+    font-size: 24px;
+    margin: 0 25px;
+}
+
+.btnRemove {
+    background: rgb(255 0 0 / 10%);
+}
+
+.split {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
