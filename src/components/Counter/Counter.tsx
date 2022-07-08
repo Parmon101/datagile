@@ -14,37 +14,38 @@ type CounterType = {
 export const Counter: React.FC<CounterType> = ({ id, value, index }) => {
     const dispatch = useAppDispatch();
 
-    const onClickIncrement = () => {
-        dispatch(increment({ id } as CounterType));
-    };
+    const onClickIncrement = React.useCallback(() => {
+        dispatch(increment({ id }));
+    }, [dispatch, id]);
+
     const onClickDecrement = () => {
-        dispatch(decrement({ id } as CounterType));
+        dispatch(decrement({ id }));
     };
 
     const onClickRemoveCounter = () => {
-        dispatch(removeCounter({ id } as CounterType));
+        dispatch(removeCounter({ id }));
     };
 
-    const isFour = (index + 1) % 4 !== 0;
+    const isFour = (index + 1) % 4 === 0;
 
     React.useEffect(() => {
-        if (!isFour) {
+        if (isFour) {
             const interval = setInterval(() => onClickIncrement(), 1000);
 
             return () => clearInterval(interval);
         }
-    }, []);
+    }, [isFour, onClickIncrement]);
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.split}>
-                {isFour ? (
+                {!isFour ? (
                     <button className={styles.btn} onClick={onClickIncrement}>
                         +
                     </button>
                 ) : null}
                 <h2>{value}</h2>
-                {isFour ? (
+                {!isFour ? (
                     <button className={styles.btn} onClick={onClickDecrement}>
                         -
                     </button>

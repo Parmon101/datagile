@@ -18,14 +18,14 @@ export const counterSlice = createSlice({
     name: 'counter',
     initialState,
     reducers: {
-        increment: (state, action: PayloadAction<CounterType>) => {
+        increment: (state, action: PayloadAction<Pick<CounterType, 'id'>>) => {
             const findCountId = state.counters.find((obj) => obj.id === action.payload.id);
             if (findCountId) {
                 findCountId.value += 1;
             }
         },
 
-        decrement: (state, action: PayloadAction<CounterType>) => {
+        decrement: (state, action: PayloadAction<Pick<CounterType, 'id'>>) => {
             const findCountId = state.counters.find((obj) => obj.id === action.payload.id);
             if (findCountId) {
                 findCountId.value -= 1;
@@ -39,7 +39,7 @@ export const counterSlice = createSlice({
             });
         },
 
-        removeCounter(state, action: PayloadAction<CounterType>) {
+        removeCounter(state, action: PayloadAction<Pick<CounterType, 'id'>>) {
             state.counters = state.counters.filter((countId) => countId.id !== action.payload.id);
         },
     },
