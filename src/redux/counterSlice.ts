@@ -23,9 +23,6 @@ export const counterSlice = createSlice({
             if (findCountId) {
                 findCountId.value += 1;
             }
-
-            // передаешь сюда как-то уникальный айдишник кликнутого счетчика
-            // state.counters[props.id] += 1;
         },
 
         decrement: (state, action: PayloadAction<CounterType>) => {
@@ -45,21 +42,6 @@ export const counterSlice = createSlice({
         removeCounter(state, action: PayloadAction<CounterType>) {
             state.counters = state.counters.filter((countId) => countId.id !== action.payload.id);
         },
-
-        // addCounter: (state, action: PayloadAction<CounterType>) => {
-        //     const findItem = state.counters.find((obj) => obj.id === action.payload.id);
-
-        //     if (findItem) {
-        //         findItem.value++;
-        //     } else {
-        //         state.counters.push({
-        //             ...action.payload,
-        //             value: 1,
-        //         });
-        //     }
-        //     state.counters[0].id = Math.floor(Math.random() * 100);
-        //     // state.counters = {...state.counters, [getUniqId()]: sum(Object.getValues(state.counters))}
-        // },
     },
 });
 
